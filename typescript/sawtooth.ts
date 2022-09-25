@@ -1,6 +1,6 @@
 function sawtooth(arr: number[]): number {
+    let result = 0;
     let n = arr.length;
-    let ans = 0;
     let saw = new Array<number>(n);
 
     if (n === 0 || n === 1) {
@@ -34,7 +34,7 @@ function sawtooth(arr: number[]): number {
 
     for (let i = 0; i < n; i++) {
         if (saw[i] <= 0) continue;
-        ans += saw[i] - 1;
+        result += saw[i] - 1;
     }
-    return ans;
+    return result;
 }
