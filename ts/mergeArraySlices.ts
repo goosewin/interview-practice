@@ -1,23 +1,23 @@
 function merge(nums1: number[], _: number, nums2: number[], n: number): void {
-    if (n > 0) {
-        nums1.splice(-n);
-    }
+	if (n > 0) {
+		nums1.splice(-n);
+	}
 
-    nums2.forEach((num) => {
-        let possibleIndex;
+	nums2.forEach((num) => {
+		let possibleIndex;
 
-        if (nums1[0] > num) {
-            possibleIndex = 0;
-        }
-        else if (nums1[nums1.length - 1] < num) {
-            possibleIndex = nums1.length;
-        }
-        else {
-            possibleIndex = nums1.findIndex((n) => n > num);
-        }
+		if (nums1[0] > num) {
+			possibleIndex = 0;
+		}
+		else if (nums1[nums1.length - 1] < num) {
+			possibleIndex = nums1.length;
+		}
+		else {
+			possibleIndex = nums1.findIndex((n) => n > num);
+		}
 
-        nums1.splice(possibleIndex, 0, num)
-    });
+		nums1.splice(possibleIndex, 0, num)
+	});
 }
 
 const nums1 = [-10, -10, -9, -9, -9, -8, -8, -7, -7, -7, -6, -6, -6, -6, -6, -6, -6, -5, -5, -5, -4, -4, -4, -3, -3, -2, -2, -1, -1, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
