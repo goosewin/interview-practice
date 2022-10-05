@@ -1,3 +1,5 @@
+// (1, 2, 3)
+// (4, 5, 6)
 function solution(P, S) {
   let total = P.reduce((a, b) => a + b);
   let ans = 0;

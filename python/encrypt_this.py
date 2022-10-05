@@ -1,7 +1,7 @@
 def encrypt_this(text):
-  	result = []
+	result = []
 
-  	for word in text.split():
+	for word in text.split():
 		word = list(word)
 		word[0] = str(ord(word[0]))
 
@@ -9,4 +9,4 @@ def encrypt_this(text):
 		word[1], word[-1] = word[-1], word[1]
 
 	result.append(''.join(word))
-  	return ' '.join(result)
+	return ' '.join(result)
