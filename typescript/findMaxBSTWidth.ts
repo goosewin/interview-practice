@@ -10,30 +10,33 @@ class TreeNode {
   }
 }
 
-function verticalSums(root: TreeNode | null): { [k: number]: number } {
-  if (!root) return {};
-  let ans: { [k: number]: number } = {};
+function getMaxWidth(root: TreeNode | null): number {
+  if (!root) return 0;
+  const widths: number[] = [];
 
-  function traverse(node: TreeNode | null, coordinate = 0) {
+  function traverse(node: TreeNode | null, depth = 0) {
     if (!node) return;
-    if (!ans[coordinate]) ans[coordinate] = 0;
+    if (!widths[depth]) widths[depth] = 0;
 
-    ans[coordinate] += node.val;
-    traverse(node.left, coordinate - 1);
-    traverse(node.right, coordinate + 1);
+    widths[depth]++;
+    traverse(node.left, depth + 1);
+    traverse(node.right, depth + 1);
   }
 
   traverse(root);
-  return ans;
+  return Math.max(...widths);
 }
 
 // @ts-ignore
 const root = new TreeNode(1);
 root.left = new TreeNode(2);
+root.left.left = new TreeNode(1);
+root.left.left.right = new TreeNode(4);
+root.left.left.left = new TreeNode(0);
 root.right = new TreeNode(3);
 root.right.left = new TreeNode(5);
 root.right.right = new TreeNode(6);
 root.right.left.left = new TreeNode(7);
 root.right.left.right = new TreeNode(8);
 
-console.log(verticalSums(root));
+console.log(getMaxWidth(root));
