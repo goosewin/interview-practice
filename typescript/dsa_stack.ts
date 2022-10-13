@@ -132,7 +132,7 @@ class Queue {
 }
 
 class Stack {
-	data: number[];
+	private data: number[];
 
 	constructor() {
 		this.data = [];
@@ -158,29 +158,25 @@ class Stack {
 }
 
 class StackQueue {
-	stack: Stack;
-
-	constructor() {
-		this.stack = new Stack();
-	}
+	private data: number[] = [];
 
 	push(x: number): void {
-		this.stack.push(x);
+		this.data.push(x);
 	}
 
-	pop(): number {
-		if (this.stack.data.length === 0) {
-			return NaN;
+	pop(): number | null {
+		if (this.data.length === 0) {
+			return null;
 		}
-		return this.stack.data.shift() as number;
+		return this.data.shift() as number;
 	}
 
 	peek(): number {
-		return this.stack.data[0];
+		return this.data[0];
 	}
 
 	empty(): boolean {
-		return this.stack.empty();
+		return this.data.length == 0;
 	}
 }
 

@@ -18,23 +18,19 @@ interface ListNode {
 
 function mergeLists(headA: ListNode | undefined | null, headB: ListNode | undefined | null) {
   // console.log(JSON.stringify(headA), JSON.stringify(headB));
+  if (!headA) return headB;
+  else if (!headB) return headA;
 
-  if (!headA) {
-    return headB;
-  } else if (!headB) {
-    return headA;
-  }
-
-  let mergedHead: ListNode | undefined | null = null;
+  let ansHead: ListNode | undefined | null = null;
   if (headA.value <= headB.value) {
-    mergedHead = headA;
+    ansHead = headA;
     headA = headA.next;
   } else {
-    mergedHead = headB;
+    ansHead = headB;
     headB = headB.next;
   }
 
-  let mergedTail = mergedHead;
+  let ansTail = ansHead;
 
   while (headA && headB) {
     let tmp: ListNode | undefined | null = null;
@@ -47,21 +43,20 @@ function mergeLists(headA: ListNode | undefined | null, headB: ListNode | undefi
       headB = headB.next;
     }
 
-    mergedTail.next = tmp;
-    mergedTail = tmp;
+    ansTail.next = tmp;
+    ansTail = tmp;
   }
 
-  if (headA) mergedTail.next = headA;
-  else if (headB) mergedTail.next = headB;
+  if (headA) ansTail.next = headA;
+  else if (headB) ansTail.next = headB;
 
-  return mergedHead;
+  return ansHead;
 }
 
 function printList(list: ListNode | undefined | null) {
   let result: number[] = [];
 
   let tmp = list;
-
   while (tmp) {
     result.push(tmp.value);
     tmp = tmp.next;
